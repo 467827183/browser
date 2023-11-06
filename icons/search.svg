@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <mask id="search_svg__a" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+    <path fill="#A4A4A4" d="M0 0h32v32H0z"/>
+  </mask>
+  <g mask="url(#search_svg__a)" stroke="#fff" stroke-width="2.667">
+    <circle cx="14.667" cy="14.666" r="10.667"/>
+    <path d="m20.943 21.724 8.485 8.485"/>
+  </g>
+</svg>

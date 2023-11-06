@@ -1,0 +1,7 @@
+@import "common/common";
+.container {
+  padding:resize(64) resize(160);
+  @media (max-width: 1000px) {
+    padding:24px 20px;
+    }
+}

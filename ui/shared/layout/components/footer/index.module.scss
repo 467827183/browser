@@ -1,0 +1,272 @@
+@import "common/common";
+
+.container {
+  background: #000;
+  padding: resize(48) resize(120);
+  @media (max-width: 1000px) {
+    padding: 48px 20px;
+  }
+  .logo {
+    width: resize(279);
+    height: resize(48);
+    position: relative;
+    margin-bottom: resize(59);
+    @media (max-width: 1000px) {
+      width: 140px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+  }
+  .top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding-bottom: resize(48);
+    border-bottom: 1px solid #DFE1E5;
+    @media (max-width: 1000px) {
+      grid-template-columns: auto;
+      padding-bottom: 16px;
+    }
+
+    .left {
+      margin-right: resize(120);
+      @media (max-width: 1000px) {
+        margin-right: 0;
+      }
+
+      & > p {
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: resize(18);
+        font-style: normal;
+        font-weight: 600;
+        line-height: 133.333%;
+        white-space: break-spaces;
+        @media (max-width: 1000px) {
+          font-size: 12px;
+        }
+      }
+
+      .container_social {
+        display: flex;
+        align-items: center;
+        margin-top: resize(48);
+        @media (max-width: 1000px) {
+          margin-top: 16px;
+        }
+
+        & > li {
+          margin-right: resize(10);
+          @media (max-width: 1000px) {
+            margin-right: 5px;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          & > a {
+            display: block;
+            width: resize(64);
+            height: resize(64);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            @media (max-width: 1000px) {
+              width: 32px;
+              height: 32px;
+            }
+          }
+
+          &:nth-child(1) {
+            & > a {
+              background-image: url("/assets/icon_medium_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_medium_active.png");
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            & > a {
+              background-image: url("/assets/icon_discord_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_discord_active.png");
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            & > a {
+              background-image: url("/assets/icon_twitter_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_twitter_active.png");
+              }
+            }
+          }
+
+          &:nth-child(4) {
+            & > a {
+              background-image: url("/assets/icon_telegram_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_telegram_active.png");
+              }
+            }
+          }
+
+          &:nth-child(5) {
+            & > a {
+              background-image: url("/assets/icon_linktree_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_linktree_active.png");
+              }
+            }
+          }
+
+          &:nth-child(6) {
+            & > a {
+              background-image: url("/assets/icon_reddit_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_reddit_active.png");
+              }
+            }
+          }
+
+          &:nth-child(7) {
+            & > a {
+              background-image: url("/assets/icon_mirror_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_mirror_active.png");
+              }
+            }
+          }
+
+          &:nth-child(8) {
+            & > a {
+              background-image: url("/assets/icon_github_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_github_active.png");
+              }
+            }
+          }
+
+          &:nth-child(9) {
+            & > a {
+              background-image: url("/assets/icon_youtub_white.png");
+
+              &:hover {
+                background-image: url("/assets/icon_youtub_active.png");
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .middle {
+      & > p {
+        color: #FFF;
+
+        font-family: Montserrat;
+        font-size: resize(24);
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: resize(30);
+
+        @media (max-width: 1000px) {
+          font-size: 20px;
+          margin-bottom: 16px;
+        }
+      }
+
+      ul {
+        li {
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: resize(20);
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          margin-bottom: resize(24);
+          display: flex;
+          align-items: center;
+          @media (max-width: 1000px) {
+            font-size: 14px;
+            margin-bottom: 24px;
+          }
+          &::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #EC521E;
+            margin-right: 10px;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .right {
+
+
+      .btn_add_chain {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: resize(12);
+        background: #262626;
+        padding: resize(8) resize(24);
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: resize(20);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+        @media (max-width: 1000px) {
+          border-radius: 7.5px;
+          font-size: 12.5px;
+          width: fit-content;
+          padding: 5px 15px;
+          margin-top: 24px;
+          }
+        .icon {
+          width: resize(48);
+          height: resize(48);
+          position: relative;
+          margin-right: resize(16);
+          @media (max-width: 1000px) {
+            width: 30px;
+            height: 30px;
+            padding: 10px;
+
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: resize(16);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 181.25%;
+    margin-top: resize(48);
+    @media (max-width: 1000px) {
+      font-size: 16px;
+      margin-top: 16px;
+      }
+  }
+}

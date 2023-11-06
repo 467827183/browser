@@ -1,0 +1,29 @@
+
+/* @font-face {
+  font-family: 'PaladinsExpanded';
+  src: url('/fonts/PaladinsExpanded.ttf') format('truetype');
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'BlackItalicAlt';
+  src: url('/fonts/DIN-BlackItalicAlt.otf') format('opentype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Medium';
+  src: url('/fonts/Montserrat-Medium.otf') format('opentype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Regular';
+  src: url('/fonts/Montserrat-Regular.otf') format('opentype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Light';
+  src: url('/fonts/Montserrat-Light.otf') format('opentype');
+  font-style: normal;
+}
+
+
