@@ -9,7 +9,7 @@ const LayoutSearchResults = ({ children }: Props) => {
   return (
     <Layout.Container>
       <Layout.MainArea>
-        <Layout.SideBar/>
+        <Layout.Header/>
         <Layout.MainColumn>
           { children }
         </Layout.MainColumn>
