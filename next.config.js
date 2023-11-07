@@ -13,9 +13,14 @@ const moduleExports = {
     'swagger-ui-react',
   ],
   reactStrictMode: true,
-  eslint:{
-    ignoreDuringBuilds: true
+  eslint: {
+    ignoreDuringBuilds: true,
   },
+  // images: {
+  //   loader: 'akamai',
+  //   path: '/',
+  //   unoptimized: true,
+  // },
   webpack(config, { webpack }) {
     config.plugins.push(
       new webpack.DefinePlugin({
