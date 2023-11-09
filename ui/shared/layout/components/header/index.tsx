@@ -26,6 +26,12 @@ export default function Header() {
           setIndex(_index)
       }
     }
+    function closeSubMenu(){
+        setIndex(-1)
+        if(isMobile) {
+            setShowMenu(false)
+        }
+    }
   return (
     <div className={ styles.container }>
       <Link href="/" className={ styles.logo }>
@@ -36,13 +42,13 @@ export default function Header() {
                 <li className={ classNames({ [styles.active]: pathname === '/' }) }>
                     <Link href="/" className={styles.name}>Homepage</Link>
                 </li>
-                <li className={classNames({ [styles.active]: index===1 })} onClick={()=>toggleSubMenu(1)}>
-                    <Flex alignItems={'center'}>
+                <li className={classNames({ [styles.active]: index===1 })} >
+                    <Flex alignItems={'center'} onClick={()=>toggleSubMenu(1)}>
                         <span className={styles.name}>Blockchain</span>
                         <div className={ styles.icon }></div>
                     </Flex>
-                    <div className={classNames( styles.drop,{[ styles.d_block]:index===1}) }>
-                        <ul className={ styles.sub_menu }>
+                    <div className={classNames( styles.drop,{[ styles.d_block]:index===1})}>
+                        <ul className={ styles.sub_menu } onClick={closeSubMenu}>
                             <ul>
                                 <li>
                                     <p>Blocks</p>
@@ -83,16 +89,34 @@ export default function Header() {
                         </ul>
                     </div>
                 </li>
-                <li className={ classNames({ [styles.active]: pathname === '/tokens' }) }>
-                    <Link href="/tokens" className={styles.name}>Tokens</Link>
+                <li className={classNames({ [styles.active]: index===2 })} >
+                    <Flex alignItems={'center'} onClick={()=>toggleSubMenu(2)}>
+                        <span className={styles.name}>Tokens</span>
+                        <div className={ styles.icon }></div>
+                    </Flex>
+                    <div className={classNames( styles.drop,{[ styles.d_block]:index===2}) }>
+                        <ul className={ styles.sub_menu } onClick={closeSubMenu}>
+                            <ul>
+                                <li>
+                                    <p>Tokens</p>
+                                </li>
+                                <li>
+                                    <Link href="/tokens">All</Link>
+                                </li>
+                                <li>
+                                    <Link href="/accounts">MAT</Link>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
                 </li>
-                <li className={classNames({ [styles.active]: index===3 })} onClick={()=>toggleSubMenu(3)}>
-                    <Flex alignItems={'center'}>
+                <li className={classNames({ [styles.active]: index===3 })} >
+                    <Flex alignItems={'center'} onClick={()=>toggleSubMenu(3)}>
                     <span className={styles.name}>APIs</span>
                     <div className={ styles.icon }></div>
                     </Flex>
                     <div className={classNames( styles.drop,{[ styles.d_block]:index===3}) }>
-                        <ul className={ styles.sub_menu }>
+                        <ul className={ styles.sub_menu } onClick={closeSubMenu}>
                             <ul>
                                 <li>
                                     <p>APIs</p>

@@ -78,7 +78,9 @@ function Top() {
       </div>
       <p>Match is an innovative Web3 social graph that operates on the Cosmos with a focus on decentralization and composability. It empowers users with
                 data sovereignty and provides Web3 developers with infrastructure to build novel and user-friendly DApps permissionlessly.</p>
-      <SearchBar></SearchBar>
+      <Box w={{base:"100%",lg:'50%'}}>
+          <SearchBar></SearchBar>
+      </Box>
     </div>
   );
 }
