@@ -25,7 +25,8 @@ import { Block } from '../../../types/api/block';
 import useSocketChannel from '../../../lib/socket/useSocketChannel';
 import useSocketMessage from '../../../lib/socket/useSocketMessage';
 import useNewTxsSocket from '../../../lib/hooks/useNewTxsSocket';
-
+import { useDataView } from '../../../hooks';
+import numeral from "numeral";
 export default function Home() {
   return (
     <div className={ styles.container }>
@@ -86,6 +87,13 @@ function Top() {
 }
 
 function Summary() {
+    const data = useDataView()
+    // 实名认证数
+    const chainAuth = numeral(data.data?.chainAuth).format("0.0a").split(" ")
+    // 日活
+    const chainDailyUser = numeral(data.data?.chainDailyUser).format("0.0a").split(" ")
+    // 月活
+    const chainMonthlyUser = numeral(data.data?.chainMonthlyUser).format("0.0a").split(" ")
   return (
     <div className={ styles.summary }>
       <h3>Summary</h3>
@@ -93,15 +101,15 @@ function Summary() {
         <div className={ styles.data }>
           <div>
             <span>SBT</span>
-            <p>297K+</p>
+            <p>{chainAuth[0]}{chainAuth[1]}+</p>
           </div>
           <div>
             <span>Dau</span>
-            <p>10K+</p>
+            <p>{chainDailyUser[0]}{chainDailyUser[1]}+</p>
           </div>
           <div>
             <span>Mau</span>
-            <p>300K+</p>
+            <p>{chainMonthlyUser[0]}{chainMonthlyUser[1]}+</p>
           </div>
         </div>
         <Stats></Stats>

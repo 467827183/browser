@@ -41,6 +41,7 @@ export function app(): CspDev.DirectiveDescriptor {
     ],
 
     'connect-src': [
+        "https://webapi.intoverse.co/",
       KEY_WORDS.SELF,
       ...MAIN_DOMAINS,
 

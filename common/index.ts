@@ -1,5 +1,7 @@
 import { formatUnits } from 'viem';
 import { ZERO_ADDRESS } from '../lib/consts';
+import axios from 'axios';
+import { SERVER_NEWS_API } from './constant';
 
 export function formatBalance(s: string | number, decimals = 4): string {
     const init = 0;
@@ -62,4 +64,45 @@ export async function addNetwork() {
         }
         // handle other "switch" errors
     }
+}
+export function axiosCustom({api=SERVER_NEWS_API,cmd="",headers={},params={},method="get",data={},successCode=0}):Promise<any>{
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await axios({
+                url:api+cmd,
+                method:method,
+                headers,
+                params,
+                data
+            })
+            const resData = res.data
+            // console.log(resData,"==============",successCode,resData.code===successCode)
+            if(resData.code===successCode){
+                resolve(resData.data)
+            }else {
+                console.log({
+                    cmd:api+cmd,
+                    method:method,
+                    data:resData
+                })
+                // message.error(resData.msg)
+                reject({
+                    cmd:api+cmd,
+                    method:method,
+                    msg:resData.msg
+                })
+            }
+        }catch (e) {
+            console.log({
+                cmd:api+cmd,
+                method:method,
+                data:e
+            })
+            reject({
+                cmd:api+cmd,
+                method:method,
+                msg:e
+            })
+        }
+    })
 }
