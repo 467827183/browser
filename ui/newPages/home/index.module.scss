@@ -115,17 +115,17 @@ display: block;
            }
          }
 
+         //&:nth-child(6) {
+         //  & > a {
+         //    background-image: url("/assets/icon_reddit_black.png");
+         //
+         //    &:hover {
+         //      background-image: url("/assets/icon_reddit_active.png");
+         //    }
+         //  }
+         //}
+
          &:nth-child(6) {
-           & > a {
-             background-image: url("/assets/icon_reddit_black.png");
-
-             &:hover {
-               background-image: url("/assets/icon_reddit_active.png");
-             }
-           }
-         }
-
-         &:nth-child(7) {
            & > a {
              background-image: url("/assets/icon_mirror_black.png");
 
@@ -135,7 +135,7 @@ display: block;
            }
          }
 
-         &:nth-child(8) {
+         &:nth-child(7) {
            & > a {
              background-image: url("/assets/icon_github_black.png");
 
@@ -145,7 +145,7 @@ display: block;
            }
          }
 
-         &:nth-child(9) {
+         &:nth-child(8) {
            & > a {
              background-image: url("/assets/icon_youtub_black.png");
 

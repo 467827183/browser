@@ -1,15 +1,26 @@
 import { Box, Flex, Link, Skeleton, Tooltip } from '@chakra-ui/react';
+import { useQueryClient } from '@tanstack/react-query';
 import _ from 'lodash';
 import Image from 'next/image';
+import numeral from 'numeral';
 import React from 'react';
+
+import type { SocketMessage } from '../../../lib/socket/types';
+import type { Block } from '../../../types/api/block';
 
 import SearchBar from 'ui/snippets/searchBar/SearchBar';
 
 import { bigNumberToBalance, formatAccount, formatBalance } from '../../../common';
+import { MEDIUM_LINK } from '../../../common/constant';
 import config from '../../../configs/app';
+import { useDataView } from '../../../hooks';
 import useApiQuery, { getResourceKey } from '../../../lib/api/useApiQuery';
 import getBlockTotalReward from '../../../lib/block/getBlockTotalReward';
+import useIsMobile from '../../../lib/hooks/useIsMobile';
+import useNewTxsSocket from '../../../lib/hooks/useNewTxsSocket';
 import useTimeAgoIncrement from '../../../lib/hooks/useTimeAgoIncrement';
+import useSocketChannel from '../../../lib/socket/useSocketChannel';
+import useSocketMessage from '../../../lib/socket/useSocketMessage';
 import { BLOCK } from '../../../stubs/block';
 import { HOMEPAGE_STATS } from '../../../stubs/stats';
 import { TX } from '../../../stubs/tx';
@@ -17,16 +28,8 @@ import ChainIndicators from '../../home/indicators/ChainIndicators';
 
 import StatsGasPrices from '../../home/StatsGasPrices';
 import styles from './index.module.scss';
-import useIsMobile from '../../../lib/hooks/useIsMobile';
-import { MEDIUM_LINK } from '../../../common/constant';
-import { useQueryClient } from '@tanstack/react-query';
-import { SocketMessage } from '../../../lib/socket/types';
-import { Block } from '../../../types/api/block';
-import useSocketChannel from '../../../lib/socket/useSocketChannel';
-import useSocketMessage from '../../../lib/socket/useSocketMessage';
-import useNewTxsSocket from '../../../lib/hooks/useNewTxsSocket';
-import { useDataView } from '../../../hooks';
-import numeral from "numeral";
+
+
 export default function Home() {
   return (
     <div className={ styles.container }>
@@ -40,7 +43,7 @@ export default function Home() {
 function Top() {
   return (
     <div className={ styles.header }>
-      <div className={styles.top}>
+      <div className={ styles.top }>
         <div className={ styles.container_chain_name }>
           <div className={ styles.icon_match }>
             <Image src="/assets/icon_match.png" alt="icon_match" fill={ true }></Image>
@@ -49,51 +52,51 @@ function Top() {
         </div>
         <ul className={ styles.container_social }>
           <li>
-            <a href={MEDIUM_LINK.medium}></a>
+            <a href={ MEDIUM_LINK.medium }></a>
           </li>
           <li>
-            <a href={MEDIUM_LINK.discord}></a>
+            <a href={ MEDIUM_LINK.discord }></a>
           </li>
           <li>
-            <a href={MEDIUM_LINK.twitter}></a>
+            <a href={ MEDIUM_LINK.twitter }></a>
           </li>
           <li>
-            <a href={MEDIUM_LINK.telegram}></a>
+            <a href={ MEDIUM_LINK.telegram }></a>
           </li>
           <li>
-            <a href={MEDIUM_LINK.linktree}></a>
+            <a href={ MEDIUM_LINK.linktree }></a>
+          </li>
+          { /*<li>*/ }
+          { /*  <a href={MEDIUM_LINK.reddit}></a>*/ }
+          { /*</li>*/ }
+          <li>
+            <a href={ MEDIUM_LINK.mirror }></a>
           </li>
           <li>
-            <a href={MEDIUM_LINK.reddit}></a>
+            <a href={ MEDIUM_LINK.github }></a>
           </li>
-          <li>
-            <a href={MEDIUM_LINK.mirror}></a>
-          </li>
-          <li>
-            <a href={MEDIUM_LINK.github}></a>
-          </li>
-          {/*<li>*/}
-          {/*  <a href={MEDIUM_LINK.youtub}></a>*/}
-          {/*</li>*/}
+          { /*<li>*/ }
+          { /*  <a href={MEDIUM_LINK.youtub}></a>*/ }
+          { /*</li>*/ }
         </ul>
       </div>
       <p>Match is an innovative Web3 social graph that operates on the Cosmos with a focus on decentralization and composability. It empowers users with
                 data sovereignty and provides Web3 developers with infrastructure to build novel and user-friendly DApps permissionlessly.</p>
-      <Box w={{base:"100%",lg:'50%'}}>
-          <SearchBar></SearchBar>
+      <Box w={{ base: '100%', lg: '50%' }}>
+        <SearchBar></SearchBar>
       </Box>
     </div>
   );
 }
 
 function Summary() {
-    const data = useDataView()
-    // 实名认证数
-    const chainAuth = numeral(data.data?.chainAuth).format("0.0a").split(" ")
-    // 日活
-    const chainDailyUser = numeral(data.data?.chainDailyUser).format("0.0a").split(" ")
-    // 月活
-    const chainMonthlyUser = numeral(data.data?.chainMonthlyUser).format("0.0a").split(" ")
+  const data = useDataView();
+  // 实名认证数
+  const chainAuth = numeral(data.data?.chainAuth).format('0.0a').split(' ');
+  // 日活
+  const chainDailyUser = numeral(data.data?.chainDailyUser).format('0.0a').split(' ');
+  // 月活
+  const chainMonthlyUser = numeral(data.data?.chainMonthlyUser).format('0.0a').split(' ');
   return (
     <div className={ styles.summary }>
       <h3>Summary</h3>
@@ -101,15 +104,15 @@ function Summary() {
         <div className={ styles.data }>
           <div>
             <span>SBT</span>
-            <p>{chainAuth[0]}{chainAuth[1]}+</p>
+            <p>{ chainAuth[0] }{ chainAuth[1] }+</p>
           </div>
           <div>
             <span>Dau</span>
-            <p>{chainDailyUser[0]}{chainDailyUser[1]}+</p>
+            <p>{ chainDailyUser[0] }{ chainDailyUser[1] }+</p>
           </div>
           <div>
             <span>Mau</span>
-            <p>{chainMonthlyUser[0]}{chainMonthlyUser[1]}+</p>
+            <p>{ chainMonthlyUser[0] }{ chainMonthlyUser[1] }+</p>
           </div>
         </div>
         <Stats></Stats>
@@ -166,10 +169,10 @@ function Stats() {
                   fast: 0,
                   slow: 0,
                 }) || {
-                    average: 0,
-                    fast: 0,
-                    slow: 0,
-                }}/>
+                  average: 0,
+                  fast: 0,
+                  slow: 0,
+                } }/>
               ) }>
                 <p className={ styles.color_main }>{ `${ Number(_.get(data, [ 'gas_prices', 'average' ], 0)).toLocaleString() } Gwei` }</p>
               </Tooltip>
@@ -209,36 +212,36 @@ function BlocksAndTransactions() {
 }
 
 function Blocks() {
-    const blocksMaxCount = 4
+  const blocksMaxCount = 4;
   const { data, isPlaceholderData, isError } = useApiQuery('homepage_blocks', {
     queryOptions: {
       placeholderData: Array(blocksMaxCount).fill(BLOCK),
     },
   });
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-    const handleNewBlockMessage: SocketMessage.NewBlock['handler'] = React.useCallback((payload) => {
-        queryClient.setQueryData(getResourceKey('homepage_blocks'), (prevData: Array<Block> | undefined) => {
+  const handleNewBlockMessage: SocketMessage.NewBlock['handler'] = React.useCallback((payload) => {
+    queryClient.setQueryData(getResourceKey('homepage_blocks'), (prevData: Array<Block> | undefined) => {
 
-            const newData = prevData ? [ ...prevData ] : [];
+      const newData = prevData ? [ ...prevData ] : [];
 
-            if (newData.some((block => block.height === payload.block.height))) {
-                return newData;
-            }
+      if (newData.some((block => block.height === payload.block.height))) {
+        return newData;
+      }
 
-            return [ payload.block, ...newData ].sort((b1, b2) => b2.height - b1.height).slice(0, blocksMaxCount);
-        });
-    }, [ queryClient, blocksMaxCount ]);
-
-    const channel = useSocketChannel({
-        topic: 'blocks:new_block',
-        isDisabled: isPlaceholderData || isError,
+      return [ payload.block, ...newData ].sort((b1, b2) => b2.height - b1.height).slice(0, blocksMaxCount);
     });
-    useSocketMessage({
-        channel,
-        event: 'new_block',
-        handler: handleNewBlockMessage,
-    });
+  }, [ queryClient, blocksMaxCount ]);
+
+  const channel = useSocketChannel({
+    topic: 'blocks:new_block',
+    isDisabled: isPlaceholderData || isError,
+  });
+  useSocketMessage({
+    channel,
+    event: 'new_block',
+    handler: handleNewBlockMessage,
+  });
   return (
     <div className={ styles.blocks }>
       <div className={ styles.blocks_header }>
@@ -251,7 +254,7 @@ function Blocks() {
         </div>
       </div>
       <ul className={ styles.ul_blocks }>
-        { data?.slice(0,4).map((item, index) => {
+        { data?.slice(0, 4).map((item, index) => {
           return (
             <BlockItem key={ 'block_item_' + index } data={ item } isLoading={ isPlaceholderData }></BlockItem>
           );
@@ -267,7 +270,7 @@ function BlockItem({ data, isLoading }: {
 }) {
   const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
   const totalReward = getBlockTotalReward(data);
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
   return (
     <li >
       <div className={ styles.flag }>BK</div>
@@ -276,10 +279,10 @@ function BlockItem({ data, isLoading }: {
         <span className={ styles.time }>{ timeAgo }</span>
       </div>
       <div className={ styles.miner }>
-        <p>Validated By Validator: <Tooltip label={ data.miner.hash }><Link href={ `/address/${ data.miner.hash }` } className={styles.hash}>{ isMobile?formatAccount(data.miner.hash):data.miner.hash }</Link></Tooltip> </p>
-        {/*<Skeleton isLoaded={ !isLoading } overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap" as="span">*/}
-        {/*  { data.miner.hash }*/}
-        {/*</Skeleton>*/}
+        <p>Validated By Validator: <Tooltip label={ data.miner.hash }><Link href={ `/address/${ data.miner.hash }` } className={ styles.hash }>{ isMobile ? formatAccount(data.miner.hash) : data.miner.hash }</Link></Tooltip> </p>
+        { /*<Skeleton isLoaded={ !isLoading } overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap" as="span">*/ }
+        { /*  { data.miner.hash }*/ }
+        { /*</Skeleton>*/ }
         <span className={ styles.time }>{ data.tx_count } Transactions</span>
         <span className={ styles.time }>{ timeAgo }</span>
       </div>
@@ -293,7 +296,7 @@ function Transactions() {
       placeholderData: Array(4).fill(TX),
     },
   });
-    const { num, socketAlert } = useNewTxsSocket();
+  const { num, socketAlert } = useNewTxsSocket();
   return (
     <div className={ styles.transactions }>
       <div className={ styles.blocks_header }>
@@ -306,7 +309,7 @@ function Transactions() {
         </div>
       </div>
       <ul className={ styles.ul_transactions }>
-        { data?.slice(0,4).map((item, index) => {
+        { data?.slice(0, 4).map((item, index) => {
           return (
             <TransactionItem key={ 'transaction_item_' + index } data={ item } isLoading={ isPlaceholderData }></TransactionItem>
           );
@@ -321,7 +324,7 @@ function TransactionItem({ data, isLoading }: {
   isLoading: boolean;
 }) {
   const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
   return (
     <li >
       <div className={ styles.flag }>TX</div>
@@ -330,12 +333,12 @@ function TransactionItem({ data, isLoading }: {
         <span className={ styles.time }>{ timeAgo }</span>
         { /*<span>{ formatBalance(totalReward.toString()) }MAT</span>*/ }
       </div>
-        {isMobile && <div></div>}
+      { isMobile && <div></div> }
       <div className={ styles.miner }>
         <p>From:
           <Tooltip label={ _.get(data, [ 'from', 'hash' ], '') }>
-          <Link href={ `/address/${ _.get(data, [ 'from', 'hash' ], '') }` } className={ styles.hash }>{ _.get(data, [ 'from', 'hash' ], '') }</Link>
-        </Tooltip>
+            <Link href={ `/address/${ _.get(data, [ 'from', 'hash' ], '') }` } className={ styles.hash }>{ _.get(data, [ 'from', 'hash' ], '') }</Link>
+          </Tooltip>
         </p>
         <p>To: <Tooltip label={ _.get(data, [ 'to', 'hash' ], '') }>
           <Link href={ `/address/${ _.get(data, [ 'to', 'hash' ], '') }` } className={ styles.hash }>{ _.get(data, [ 'to', 'hash' ], '') }</Link>

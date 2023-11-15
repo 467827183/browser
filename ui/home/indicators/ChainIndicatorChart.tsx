@@ -20,7 +20,7 @@ const CHART_MARGIN = { bottom: 5, left: 10, right: 10, top: 0 };
 
 const ChainIndicatorChart = ({ data }: Props) => {
   const overlayRef = React.useRef<SVGRectElement>(null);
-  const lineColor = useToken('colors', 'blue.500');
+  const lineColor = '#EC521E';
 
   const [ rect, ref ] = useClientRect<SVGSVGElement>();
   const { innerWidth, innerHeight } = calculateInnerSize(rect, CHART_MARGIN);
@@ -33,11 +33,11 @@ const ChainIndicatorChart = ({ data }: Props) => {
   return (
     <svg width="100%" height="100%" ref={ ref } cursor="pointer">
       <g transform={ `translate(${ CHART_MARGIN?.left || 0 },${ CHART_MARGIN?.top || 0 })` } opacity={ rect ? 1 : 0 }>
-        <ChartArea
-          data={ data[0].items }
-          xScale={ xScale }
-          yScale={ yScale }
-        />
+        { /*<ChartArea*/ }
+        { /*    data={ data[0].items }*/ }
+        { /*    xScale={ xScale }*/ }
+        { /*    yScale={ yScale }*/ }
+        { /*/>*/ }
         <ChartLine
           data={ data[0].items }
           xScale={ xScale }

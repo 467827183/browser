@@ -24,10 +24,10 @@ export default function generate<R extends Route>(route: R, apiData?: ApiData<R>
   const pageOgType = getPageOgType(route.pathname);
 
   return {
-    title: title,
-    description,
+    title: 'Match Chain blockchain explorer',
+    description: 'Match is an innovative Web3 social graph that operates on the Cosmos with a focus on decentralization and composability. It empowers users with data sovereignty and provides Web3 developers with infrastructure to build novel and user-friendly DApps permissionlessly.',
     opengraph: {
-      title: title,
+      title: 'Match Chain blockchain explorer',
       description: pageOgType !== 'Regular page' ? config.meta.og.description : '',
       imageUrl: pageOgType !== 'Regular page' ? config.meta.og.imageUrl : '',
     },
