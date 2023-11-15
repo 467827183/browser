@@ -1,7 +1,6 @@
-import Footer from './footer';
-
 import Container from './Container';
 import Content from './Content';
+import Footer from './footer';
 import Header from './header';
 import MainArea from './MainArea';
 import MainColumn from './MainColumn';
