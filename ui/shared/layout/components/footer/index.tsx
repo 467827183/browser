@@ -50,7 +50,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className={ styles.middle }>
-          <p>Cpmpany</p>
+          <p>Company</p>
           <ul>
             <li>Contact Us</li>
             <li>Learn Match</li>
