@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { addNetwork } from '../../../../../common';
@@ -52,9 +53,15 @@ export default function Footer() {
         <div className={ styles.middle }>
           <p>Company</p>
           <ul>
-            <li>Contact Us</li>
-            <li>Learn Match</li>
-            <li>Terms of Service</li>
+            <li>
+              <a href={ 'mailto:' + MEDIUM_LINK.concat_us }>Contact Us</a>
+            </li>
+            <li>
+              <a href={ MEDIUM_LINK.learn_about_match }>Learn About Match</a>
+            </li>
+            <li>
+              <Link href="/terms_of_service">Terms of Service</Link>
+            </li>
           </ul>
         </div>
         <div className={ styles.right }>
@@ -67,7 +74,7 @@ export default function Footer() {
             <div className={ styles.icon }>
               <Image src="/assets/icon_metamask.png" fill={ true } alt="logo"></Image>
             </div>
-                        Add Match chain
+                        Add Match Chain
           </div>
         </div>
       </div>

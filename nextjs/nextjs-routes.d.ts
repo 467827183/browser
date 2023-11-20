@@ -38,6 +38,7 @@ declare module "nextjs-routes" {
     | StaticRoute<"/login">
     | StaticRoute<"/search-results">
     | StaticRoute<"/stats">
+    | StaticRoute<"/terms_of_service">
     | DynamicRoute<"/token/[hash]", { "hash": string }>
     | DynamicRoute<"/token/[hash]/instance/[id]", { "hash": string; "id": string }>
     | StaticRoute<"/tokens">
