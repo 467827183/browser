@@ -33,6 +33,7 @@ const isRollup = config.features.optimisticRollup.isEnabled || config.features.z
 const BlocksListItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
   const totalReward = getBlockTotalReward(data);
   const burntFees = BigNumber(data.burnt_fees || 0);
+  const priorityFee = BigNumber(data.priority_fee || 0);
   const txFees = BigNumber(data.tx_fees || 0);
 
   const separatorColor = useColorModeValue('gray.200', 'gray.700');
@@ -93,9 +94,10 @@ const BlocksListItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
       </Box>
       { !isRollup && !config.UI.views.block.hiddenFields?.total_reward && (
         <Flex columnGap={ 2 }>
-          <Text fontWeight={ 500 }>Reward { config.chain.currency.symbol }</Text>
+          <Text fontWeight={ 500 }>Priority fee { config.chain.currency.symbol }</Text>
           <Skeleton isLoaded={ !isLoading } display="inline-block" color="text_secondary">
-            <span>{ totalReward.toFixed() }</span>
+            { /*<span>{ totalReward.toFixed() }</span>*/ }
+            <span>{ priorityFee.div(WEI).toFixed(18) }</span>
           </Skeleton>
         </Flex>
       ) }
@@ -106,7 +108,7 @@ const BlocksListItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
             <Flex>
               <Icon as={ flameIcon } boxSize={ 5 } color="gray.500" isLoading={ isLoading }/>
               <Skeleton isLoaded={ !isLoading } display="inline-block" color="text_secondary" ml={ 2 }>
-                <span>{ burntFees.div(WEI).toFixed() }</span>
+                <span>{ burntFees.div(WEI).toFixed(18) }</span>
               </Skeleton>
             </Flex>
             <Utilization ml={ 4 } value={ burntFees.div(txFees).toNumber() } isLoading={ isLoading }/>

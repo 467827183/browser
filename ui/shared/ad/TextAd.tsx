@@ -7,14 +7,19 @@ import * as cookies from 'lib/cookies';
 
 import CoinzillaTextAd from './CoinzillaTextAd';
 
-const TextAd = ({ className }: {className?: string}) => {
-  const hasAdblockCookie = cookies.get(cookies.NAMES.ADBLOCK_DETECTED, useAppContext().cookies);
-
-  if (!config.features.adsText.isEnabled || hasAdblockCookie) {
-    return null;
-  }
-
-  return <CoinzillaTextAd className={ className }/>;
-};
-
-export default chakra(TextAd);
+// const TextAd = ({ className }: {className?: string}) => {
+//   const hasAdblockCookie = cookies.get(cookies.NAMES.ADBLOCK_DETECTED, useAppContext().cookies);
+//
+//   if (!config.features.adsText.isEnabled || hasAdblockCookie) {
+//     return null;
+//   }
+//
+//   return <CoinzillaTextAd className={ className }/>;
+// };
+//
+// export default chakra(TextAd);
+export default function TextAd() {
+  return (
+    <div></div>
+  );
+}

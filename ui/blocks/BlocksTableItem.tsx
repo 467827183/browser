@@ -31,6 +31,7 @@ const isRollup = config.features.optimisticRollup.isEnabled || config.features.z
 const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
   const totalReward = getBlockTotalReward(data);
   const burntFees = BigNumber(data.burnt_fees || 0);
+  const priorityFee = BigNumber(data.priority_fee || 0);
   const txFees = BigNumber(data.tx_fees || 0);
 
   const separatorColor = useColorModeValue('gray.200', 'gray.700');
@@ -108,7 +109,9 @@ const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
       ) }
       <Td fontSize="sm">
         <Skeleton isLoaded={ !isLoading } display="inline-block">
-          { totalReward.toFixed(8) }
+          { /*{ totalReward.toFixed(8) }*/ }
+          { priorityFee.dividedBy(WEI).toFixed(18) }
+
         </Skeleton>
       </Td>
       { !isRollup && !config.UI.views.block.hiddenFields?.burnt_fees && (
@@ -116,7 +119,7 @@ const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
           <Flex alignItems="center" columnGap={ 2 }>
             <Icon as={ flameIcon } boxSize={ 5 } color={ burntFeesIconColor } isLoading={ isLoading }/>
             <Skeleton isLoaded={ !isLoading } display="inline-block">
-              { burntFees.dividedBy(WEI).toFixed(8) }
+              { burntFees.dividedBy(WEI).toFixed(18) }
             </Skeleton>
           </Flex>
           <Tooltip label={ isLoading ? undefined : 'Burnt fees / Txn fees * 100%' }>
