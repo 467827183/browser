@@ -43,8 +43,9 @@ const feature = config.features.adsBanner;
 // };
 //
 // export default chakra(AdBanner);
-export default function AdBanner() {
+function TextAd(props: any) {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);

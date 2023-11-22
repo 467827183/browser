@@ -28,8 +28,9 @@ import isBrowser from 'lib/isBrowser';
 // };
 //
 // export default chakra(CoinzillaBanner);
-export default function CoinzillaBanner() {
+function TextAd() {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);

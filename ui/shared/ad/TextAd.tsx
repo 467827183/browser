@@ -18,8 +18,9 @@ import CoinzillaTextAd from './CoinzillaTextAd';
 // };
 //
 // export default chakra(TextAd);
-export default function TextAd() {
+function TextAd() {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);

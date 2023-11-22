@@ -55,8 +55,9 @@ const feature = config.features.adsBanner;
 // };
 //
 // export default chakra(AdbutlerBanner);
-export default function AdbutlerBanner() {
+function TextAd() {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);

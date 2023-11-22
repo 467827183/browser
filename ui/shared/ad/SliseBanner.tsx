@@ -27,8 +27,9 @@ import config from 'configs/app';
 // };
 //
 // export default chakra(SliseBanner);
-export default function SliseBanner() {
+function TextAd() {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);

@@ -88,8 +88,9 @@ type AdData = {
 // };
 //
 // export default chakra(CoinzillaTextAd);
-export default function CoinzillaTextAd() {
+function TextAd() {
   return (
     <div></div>
   );
 }
+export default chakra(TextAd);
