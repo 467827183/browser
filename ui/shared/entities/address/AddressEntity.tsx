@@ -12,6 +12,7 @@ import iconContractVerified from 'icons/contract_verified.svg';
 import iconContract from 'icons/contract.svg';
 import * as EntityBase from 'ui/shared/entities/base/components';
 
+import shortenString from '../../../../lib/shortenString';
 import { getIconProps } from '../base/utils';
 import AddressIdenticon from './AddressIdenticon';
 
@@ -112,7 +113,8 @@ const Content = chakra((props: ContentProps) => {
     return (
       <Tooltip label={ label } maxW="100vw">
         <Skeleton isLoaded={ !props.isLoading } overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap" as="span">
-          { props.address.name }
+          { /*{ props.address.name }*/ }
+          <chakra.span as="span">{ shortenString(props.address.hash) }</chakra.span>
         </Skeleton>
       </Tooltip>
     );
