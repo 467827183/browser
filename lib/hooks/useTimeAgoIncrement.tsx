@@ -22,7 +22,7 @@ function getUnits(diff: number) {
 function getUpdateParams(ts: string) {
   const timeDiff = Date.now() - new Date(ts).getTime();
   const [ unit, higherUnit ] = getUnits(timeDiff);
-
+  console.log(ts, timeDiff, unit, higherUnit, '-----getUpdateParams');
   if (unit === DAY) {
     return { interval: DAY };
   }
@@ -32,9 +32,9 @@ function getUpdateParams(ts: string) {
   return {
     startTimeout: unit === SECOND ?
       0 :
-      // here we assume that in current dayjs locale time difference is rounded by Math.round function
-      // so we have to update displayed value whenever time comes over the middle of the unit interval
-      // since it will be rounded to the upper bound
+    // here we assume that in current dayjs locale time difference is rounded by Math.round function
+    // so we have to update displayed value whenever time comes over the middle of the unit interval
+    // since it will be rounded to the upper bound
       (leftover < unit / 2 ? leftover + unit / 2 : leftover - unit / 2) + SECOND,
     endTimeout: higherUnit - timeDiff + SECOND,
     interval: unit,

@@ -25,10 +25,8 @@ import { BLOCK } from '../../../stubs/block';
 import { HOMEPAGE_STATS } from '../../../stubs/stats';
 import { TX } from '../../../stubs/tx';
 import ChainIndicators from '../../home/indicators/ChainIndicators';
-
 import StatsGasPrices from '../../home/StatsGasPrices';
 import styles from './index.module.scss';
-
 
 export default function Home() {
   return (
@@ -202,6 +200,7 @@ function StatsItem({ isLoading, data1, data2, title }: { isLoading?: boolean; da
     </div>
   );
 }
+
 function BlocksAndTransactions() {
   return (
     <div className={ styles.container_bottom }>
@@ -256,7 +255,7 @@ function Blocks() {
       <ul className={ styles.ul_blocks }>
         { data?.slice(0, 4).map((item, index) => {
           return (
-            <BlockItem key={ 'block_item_' + index } data={ item } isLoading={ isPlaceholderData }></BlockItem>
+            <BlockItem key={ item.height + (isPlaceholderData ? String(index) : '') } data={ item } isLoading={ isPlaceholderData }></BlockItem>
           );
         }) }
       </ul>
@@ -264,32 +263,37 @@ function Blocks() {
     </div>
   );
 }
+
 function BlockItem({ data, isLoading }: {
   data: typeof BLOCK;
   isLoading: boolean;
 }) {
-  const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
+  // const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
+  const timeAgo = useTimeAgoIncrement(data.timestamp || '0', true);
   const totalReward = getBlockTotalReward(data);
   const isMobile = useIsMobile();
   return (
-    <li >
+    <li>
       <div className={ styles.flag }>BK</div>
       <div className={ styles.size }>
         <Link className={ styles.block_number } href={ `/block/${ data.height }` }>{ data.height }</Link>
-        <span className={ styles.time }>{ timeAgo }</span>
+        { data.timestamp && <span className={ styles.time }>{ timeAgo }</span> }
       </div>
       <div className={ styles.miner }>
-        <p>Validated By Validator: <Tooltip label={ data.miner.hash }><Link href={ `/address/${ data.miner.hash }` } className={ styles.hash }>{ isMobile ? formatAccount(data.miner.hash) : data.miner.hash }</Link></Tooltip> </p>
+        <p>Validated By Validator: <Tooltip label={ data.miner.hash }><Link href={ `/address/${ data.miner.hash }` }
+          className={ styles.hash }>{ isMobile ? formatAccount(data.miner.hash) : data.miner.hash }</Link></Tooltip>
+        </p>
         { /*<Skeleton isLoaded={ !isLoading } overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap" as="span">*/ }
         { /*  { data.miner.hash }*/ }
         { /*</Skeleton>*/ }
         <span className={ styles.time }>{ data.tx_count } Transactions</span>
-        <span className={ styles.time }>{ timeAgo }</span>
+        { data.timestamp && <span className={ styles.time }>{ timeAgo }</span> }
       </div>
       <div className={ styles.reward }>{ formatBalance(totalReward.toString()) }MAT</div>
     </li>
   );
 }
+
 function Transactions() {
   const { data, isPlaceholderData, isError } = useApiQuery('homepage_txs', {
     queryOptions: {
@@ -311,7 +315,7 @@ function Transactions() {
       <ul className={ styles.ul_transactions }>
         { data?.slice(0, 4).map((item, index) => {
           return (
-            <TransactionItem key={ 'transaction_item_' + index } data={ item } isLoading={ isPlaceholderData }></TransactionItem>
+            <TransactionItem key={ item.hash + (isPlaceholderData ? index : '') } data={ item } isLoading={ isPlaceholderData }></TransactionItem>
           );
         }) }
       </ul>
@@ -319,35 +323,38 @@ function Transactions() {
     </div>
   );
 }
+
 function TransactionItem({ data, isLoading }: {
   data: typeof TX;
   isLoading: boolean;
 }) {
-  const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
+  // const timeAgo = useTimeAgoIncrement(data.timestamp, !isLoading);
+  const timeAgo = useTimeAgoIncrement(data.timestamp || '0', true);
   const isMobile = useIsMobile();
   return (
-    <li >
+    <li>
       <div className={ styles.flag }>TX</div>
       <div className={ styles.size }>
         <Tooltip label={ data.hash }><Link href={ `/tx/${ data.hash }` } className={ styles.hash }>{ data.hash }</Link></Tooltip>
-        <span className={ styles.time }>{ timeAgo }</span>
+        { data.timestamp && <span className={ styles.time }>{ timeAgo }</span> }
         { /*<span>{ formatBalance(totalReward.toString()) }MAT</span>*/ }
       </div>
       { isMobile && <div></div> }
       <div className={ styles.miner }>
         <p>From:
           <Tooltip label={ _.get(data, [ 'from', 'hash' ], '') }>
-            <Link href={ `/address/${ _.get(data, [ 'from', 'hash' ], '') }` } className={ styles.hash }>{ _.get(data, [ 'from', 'hash' ], '') }</Link>
+            <Link href={ `/address/${ _.get(data, [ 'from', 'hash' ], '') }` }
+              className={ styles.hash }>{ _.get(data, [ 'from', 'hash' ], '') }</Link>
           </Tooltip>
         </p>
         <p>To: <Tooltip label={ _.get(data, [ 'to', 'hash' ], '') }>
           <Link href={ `/address/${ _.get(data, [ 'to', 'hash' ], '') }` } className={ styles.hash }>{ _.get(data, [ 'to', 'hash' ], '') }</Link>
-        </Tooltip> </p>
+        </Tooltip></p>
       </div>
       <div className={ styles.block }>
         <p>Block</p>
         <Link href={ `/block/${ data.block }` }>#{ data.block }</Link>
-        <span className={ styles.time }>{ timeAgo }</span>
+        { data.timestamp && <span className={ styles.time }>{ timeAgo }</span> }
       </div>
     </li>
   );
