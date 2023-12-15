@@ -9,8 +9,8 @@ export default function Header() {
   const pathname = usePathname();
   return (
     <div className={ styles.container }>
-      <Link href="/" className={ styles.logo }>
-        <Image src="/assets/logo.png" fill={ true } alt="logo"></Image>
+      <Link href="/" >
+        <img className={ styles.logo } src="/assets/logo.png" alt="logo"></img>
       </Link>
       <div className={ styles.container_right }>
         <ul className={ styles.menu }>

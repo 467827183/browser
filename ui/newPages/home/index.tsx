@@ -149,9 +149,7 @@ function Stats() {
       <div className={ styles.line }></div>
       <div className={ styles.container_item }>
         <div>
-          <div className={ styles.icon }>
-            <Image src="/assets/icon_gas_price.png" fill={ true } alt="icon_gas_price"></Image>
-          </div>
+          <img className={ styles.icon } src="/assets/icon_gas_price.png" alt="icon_gas_price"></img>
           <div>
             <p>GAS Price</p>
             { isPlaceholderData ? <Skeleton height="20px"/> : (
@@ -172,9 +170,7 @@ function Stats() {
           </div>
         </div>
         <div>
-          <div className={ styles.icon }>
-            <Image src="/assets/icon_wallet_address.png" fill={ true } alt="icon_wallet_address"></Image>
-          </div>
+          <img className={ styles.icon } src="/assets/icon_wallet_address.png" alt="icon_wallet_address"></img>
           <StatsItem
             isLoading={ isPlaceholderData }
             title="Wallet addresses"
