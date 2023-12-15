@@ -43,9 +43,7 @@ function Top() {
     <div className={ styles.header }>
       <div className={ styles.top }>
         <div className={ styles.container_chain_name }>
-          <div className={ styles.icon_match }>
-            <Image src="/assets/icon_match.png" alt="icon_match" fill={ true }></Image>
-          </div>
+          <img className={ styles.icon_match } src="/assets/icon_match.png" alt="icon_match"></img>
           <h1>Match Chain (Test)</h1>
         </div>
         <ul className={ styles.container_social }>
@@ -130,9 +128,7 @@ function Stats() {
     <div className={ styles.info }>
       <div className={ styles.container_item }>
         <div>
-          <div className={ styles.icon }>
-            <Image src="/assets/icon_transactions.png" fill={ true } alt="icon_transactions"></Image>
-          </div>
+          <img className={ styles.icon } src="/assets/icon_transactions.png" alt="icon_transactions"></img>
           <StatsItem
             isLoading={ isPlaceholderData }
             title="Total Transactions"
@@ -141,9 +137,7 @@ function Stats() {
 
         </div>
         <div>
-          <div className={ styles.icon }>
-            <Image src="/assets/icon_blocks.png" fill={ true } alt="icon_blocks"></Image>
-          </div>
+          <img className={ styles.icon } src="/assets/icon_blocks.png" alt="icon_blocks"></img>
           <StatsItem
             isLoading={ isPlaceholderData }
             title="Total Blocks"
@@ -244,13 +238,9 @@ function Blocks() {
   return (
     <div className={ styles.blocks }>
       <div className={ styles.blocks_header }>
-        <div className={ styles.icon }>
-          <Image src="/assets/icon_blocks.png" fill={ true } alt="icon_blocks"></Image>
-        </div>
+        <img className={ styles.icon } src="/assets/icon_blocks.png" alt="icon_blocks"></img>
         <h3>Blocks</h3>
-        <div className={ styles.icon_arrow }>
-          <Image src="/assets/icon_arrow_right.png" fill={ true } alt="icon_arrow_right"></Image>
-        </div>
+        <img className={ styles.icon_arrow } src="/assets/icon_arrow_right.png" alt="icon_arrow_right"></img>
       </div>
       <ul className={ styles.ul_blocks }>
         { data?.slice(0, 4).map((item, index) => {
@@ -304,13 +294,9 @@ function Transactions() {
   return (
     <div className={ styles.transactions }>
       <div className={ styles.blocks_header }>
-        <div className={ styles.icon }>
-          <Image src="/assets/icon_transactions.png" fill={ true } alt="icon_transactions"></Image>
-        </div>
+        <img className={ styles.icon } src="/assets/icon_transactions.png" alt="icon_transactions"></img>
         <h3>Transactions</h3>
-        <div className={ styles.icon_arrow }>
-          <Image src="/assets/icon_arrow_right.png" fill={ true } alt="icon_arrow_right"></Image>
-        </div>
+        <img className={ styles.icon_arrow } src="/assets/icon_arrow_right.png" alt="icon_arrow_right"></img>
       </div>
       <ul className={ styles.ul_transactions }>
         { data?.slice(0, 4).map((item, index) => {

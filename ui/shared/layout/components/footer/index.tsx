@@ -12,9 +12,7 @@ export default function Footer() {
   return (
     <div className={ styles.container }>
       { isMobile && (
-        <div className={ styles.logo }>
-          <Image src="/assets/logo.png" fill={ true } alt="logo"></Image>
-        </div>
+        <img className={ styles.logo } src="/assets/logo.png" alt="logo"></img>
       ) }
       <div className={ styles.top }>
         <div className={ styles.left }>
@@ -66,14 +64,10 @@ export default function Footer() {
         </div>
         <div className={ styles.right }>
           { !isMobile && (
-            <div className={ styles.logo }>
-              <Image src="/assets/logo.png" fill={ true } alt="logo"></Image>
-            </div>
+            <img className={ styles.logo } src="/assets/logo.png" alt="logo"></img>
           ) }
           <div className={ styles.btn_add_chain } onClick={ addNetwork }>
-            <div className={ styles.icon }>
-              <Image src="/assets/icon_metamask.png" fill={ true } alt="logo"></Image>
-            </div>
+            <img className={ styles.icon } src="/assets/icon_metamask.png" alt="logo"></img>
                         Add Match Chain
           </div>
         </div>
