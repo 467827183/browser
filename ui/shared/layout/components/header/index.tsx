@@ -136,7 +136,7 @@ export default function Header() {
           <span className={ styles.chain_name }>Match Chain</span>
         </div>
       ) }
-      { isMobile && <div className={ styles.icon_menu } onClick={ () => setShowMenu(!showMenu) }> <Image src={ `/assets/icon_${ showMenu ? 'close' : 'menu' }.png` } fill={ true } alt="icon_menu"></Image> </div> }
+      { isMobile && <img className={ styles.icon_menu } onClick={ () => setShowMenu(!showMenu) } alt="icon_menu" src={ `/assets/icon_${ showMenu ? 'close' : 'menu' }.png` }></img> }
     </div>
   );
 }
