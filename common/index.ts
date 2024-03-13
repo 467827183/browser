@@ -62,6 +62,7 @@ export async function addNetwork() {
               },
               rpcUrls: [ 'https://rpc.matchscan.io/' ] /* ... */,
               blockExplorerUrls: [ 'https://lisbon.matchscan.io/' ],
+              iconUrls: [ 'https://lisbon.matchscan.io/assets/icon_match.png' ],
             },
           ],
         });
