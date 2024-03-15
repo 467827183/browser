@@ -44,6 +44,27 @@ class MyDocument extends Document {
 
           { /* FAVICON */ }
           <link rel="icon" href="/favicon/favicon.ico"/>
+          <script type="module" dangerouslySetInnerHTML={{ __html: ` // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+            apiKey: "AIzaSyDLRjlXJtYuF-5hEMdGCMkTWbaBxim_c9s",
+            authDomain: "match-98571.firebaseapp.com",
+            projectId: "match-98571",
+            storageBucket: "match-98571.appspot.com",
+            messagingSenderId: "607147760826",
+            appId: "1:607147760826:web:b7fd323b904120438a3683",
+            measurementId: "G-271SGD6JLY"
+          };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);` }}></script>
         </Head>
         <body>
           <ColorModeScript initialColorMode={ theme.config.initialColorMode }/>
