@@ -46,31 +46,27 @@ export async function addNetwork() {
       params: [ { chainId: chainId } ],
     });
   } catch (switchError: any) {
-    // This error code indicates that the chain has not been added to MetaMask.
-    if (switchError.code === 4902) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [
-            {
-              chainId: chainId,
-              chainName: 'Match',
-              nativeCurrency: {
-                name: 'MAT',
-                symbol: 'MAT', // 2-6 characters long
-                decimals: 18,
-              },
-              rpcUrls: [ 'https://rpc.matchscan.io/' ] /* ... */,
-              blockExplorerUrls: [ 'https://lisbon.matchscan.io/' ],
-              iconUrls: [ 'https://lisbon.matchscan.io/assets/icon_match.png' ],
+    try {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: chainId,
+            chainName: 'Match',
+            nativeCurrency: {
+              name: 'MAT',
+              symbol: 'MAT', // 2-6 characters long
+              decimals: 18,
             },
-          ],
-        });
-      } catch (addError) {
-        // handle "add" error
-      }
+            rpcUrls: [ 'https://rpc.matchscan.io/' ] /* ... */,
+            blockExplorerUrls: [ 'https://lisbon.matchscan.io/' ],
+            iconUrls: [ 'https://lisbon.matchscan.io/assets/icon_match.png' ],
+          },
+        ],
+      });
+    } catch (addError) {
+      // handle "add" error
     }
-    // handle other "switch" errors
   }
 }
 export function axiosCustom({ api = SERVER_NEWS_API, cmd = '', headers = {}, params = {}, method = 'get', data = {}, successCode = 0 }): Promise<any> {
