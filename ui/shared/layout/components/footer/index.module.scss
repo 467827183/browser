@@ -118,11 +118,11 @@
 
           &:nth-child(5) {
             & > a {
-              background-image: url("/assets/icon_linktree_white.png");
+              background-image: url("/assets/icon_ins_white.png");
 
-              &:hover {
-                background-image: url("/assets/icon_linktree_active.png");
-              }
+              // &:hover {
+              //   background-image: url("/assets/icon_linktree_active.png");
+              // }
             }
           }
 
@@ -138,33 +138,33 @@
 
           &:nth-child(6) {
             & > a {
-              background-image: url("/assets/icon_mirror_white.png");
+              background-image: url("/assets/icon_gitbook_white.png");
 
-              &:hover {
-                background-image: url("/assets/icon_mirror_active.png");
-              }
+              // &:hover {
+              //   background-image: url("/assets/icon_mirror_active.png");
+              // }
             }
           }
 
-          &:nth-child(7) {
-            & > a {
-              background-image: url("/assets/icon_github_white.png");
+          // &:nth-child(7) {
+          //   & > a {
+          //     background-image: url("/assets/icon_github_white.png");
 
-              &:hover {
-                background-image: url("/assets/icon_github_active.png");
-              }
-            }
-          }
+          //     &:hover {
+          //       background-image: url("/assets/icon_github_active.png");
+          //     }
+          //   }
+          // }
 
-          &:nth-child(8) {
-            & > a {
-              background-image: url("/assets/icon_youtub_white.png");
+          // &:nth-child(8) {
+          //   & > a {
+          //     background-image: url("/assets/icon_youtub_white.png");
 
-              &:hover {
-                background-image: url("/assets/icon_youtub_active.png");
-              }
-            }
-          }
+          //     &:hover {
+          //       background-image: url("/assets/icon_youtub_active.png");
+          //     }
+          //   }
+          // }
         }
       }
     }

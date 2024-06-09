@@ -68,16 +68,15 @@ function Top() {
           <li>
             <a href={ MEDIUM_LINK.mirror }></a>
           </li>
-          <li>
+          {/* <li>
             <a href={ MEDIUM_LINK.github }></a>
-          </li>
+          </li> */}
           { /*<li>*/ }
           { /*  <a href={MEDIUM_LINK.youtub}></a>*/ }
           { /*</li>*/ }
         </ul>
       </div>
-      <p>Match is an innovative Web3 social graph that operates on the Cosmos with a focus on decentralization and composability. It empowers users with
-                data sovereignty and provides Web3 developers with infrastructure to build novel and user-friendly DApps permissionlessly.</p>
+      <p>Matchain is the infrastructure for bringing AI models and dApps on chain by leveraging decentralised identity and data sovereignty</p>
       <Box w={{ base: '100%', lg: '50%' }}>
         <SearchBar></SearchBar>
       </Box>

@@ -40,9 +40,9 @@ export default function Footer() {
             <li>
               <a href={ MEDIUM_LINK.mirror }></a>
             </li>
-            <li>
+            {/* <li>
               <a href={ MEDIUM_LINK.github }></a>
-            </li>
+            </li> */}
             { /*<li>*/ }
             { /*  <a href={MEDIUM_LINK.youtub}></a>*/ }
             { /*</li>*/ }
