@@ -44,7 +44,7 @@ function Top() {
       <div className={ styles.top }>
         <div className={ styles.container_chain_name }>
           <img className={ styles.icon_match } src="/assets/icon_match.png" alt="icon_match"></img>
-          <h1>Match Chain (Test)</h1>
+          <h1>Matchain Testnet</h1>
         </div>
         <ul className={ styles.container_social }>
           <li>

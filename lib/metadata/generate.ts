@@ -25,7 +25,7 @@ export default function generate<R extends Route>(route: R, apiData?: ApiData<R>
 
   return {
     title: 'Match Chain blockchain explorer',
-    description: 'Match is an innovative Web3 social graph that operates on the Cosmos with a focus on decentralization and composability. It empowers users with data sovereignty and provides Web3 developers with infrastructure to build novel and user-friendly DApps permissionlessly.',
+    description: 'Matchain is the infrastructure for bringing AI models and dApps on chain by leveraging decentralised identity and data sovereignty',
     opengraph: {
       title: 'Match Chain blockchain explorer',
       description: pageOgType !== 'Regular page' ? config.meta.og.description : '',
