@@ -24,10 +24,10 @@ export default function generate<R extends Route>(route: R, apiData?: ApiData<R>
   const pageOgType = getPageOgType(route.pathname);
 
   return {
-    title: 'Match Chain blockchain explorer',
+    title: 'Matchain Block Explorer',
     description: 'Matchain is the infrastructure for bringing AI models and dApps on chain by leveraging decentralised identity and data sovereignty',
     opengraph: {
-      title: 'Match Chain blockchain explorer',
+      title: 'Matchain Block Explorer',
       description: pageOgType !== 'Regular page' ? config.meta.og.description : '',
       imageUrl: pageOgType !== 'Regular page' ? config.meta.og.imageUrl : '',
     },
